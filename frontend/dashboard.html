@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - Mental Health Detection</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<!-- Modern Header -->
+<header class="header">
+    <div class="header-content">
+        <div class="logo">Early Mental Burnout Detection Tool</div>
+        <nav class="nav-links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/history">History</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="main-content">
+    <div class="dashboard">
+
+        <div class="topbar">
+            <a href="/logout">Logout</a>
+            <a href="/history">History</a>
+        </div>
+
+        <h2>🧠 Mental Health Dashboard</h2>
+
+        <form action="/predict" method="post">
+            <input name="age" placeholder="Age" required>
+
+            <select name="gender">
+                <option value="0">Female</option>
+                <option value="1">Male</option>
+            </select>
+
+            <input name="screen" placeholder="Screen Time (hours)" required>
+            <input name="social" placeholder="Social Media (hours)" required>
+            <input name="entertainment" placeholder="Entertainment (hours)" required>
+            <input name="study" placeholder="Study Hours" required>
+            <input name="sleep" placeholder="Sleep Hours" required>
+
+            <button>Analyze Mental Health</button>
+        </form>
+
+        {% if anxiety %}
+        <div class="result">
+            <h3>📊 Your Mental Health Results</h3>
+            <p>😰 Anxiety: <strong>{{anxiety}}</strong></p>
+            <p>😔 Depression: <strong>{{depression}}</strong></p>
+            <p>😰 Stress: <strong>{{stress}}</strong></p>
+        </div>
+        {% endif %}
+    </div>
+</main>
+
+<!-- Simple Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <p>📧 231fa04e66@gmail.com</p>
+            <p>📞 +91 70130 15904</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 MindCare. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
